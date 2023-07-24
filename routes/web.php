@@ -21,5 +21,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::middleware('auth')->group(function () {
         Route::view('/', 'admin.page.dashboard');
+        Route::group(['prefix' => 'post', 'as' => 'post.'], function () {
+            Route::view('/store', 'admin.page.post')->name('store');
+            Route::post('/store', [\App\Http\Controllers\Admin\PostController::class, 'store']);
+            Route::get('/edit/{id}', [\App\Http\Controllers\Admin\PostController::class, 'edit']);
+            Route::put('/edit/{id}', [\App\Http\Controllers\Admin\PostController::class, 'update'])->name('update');
+        });
+        });
     });
-});
