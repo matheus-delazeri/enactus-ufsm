@@ -11,22 +11,22 @@ class UserController extends Controller
     public function login(Request $request) : RedirectResponse
     {
         $credentials = $request->validate([
-            'email' => ['required'],
+            'user' => ['required'],
             'password' => ['required'],
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('admin')->with('success', __("Successfully logged in!"));
+            return redirect()->intended('admin')->with('success', "Successfully logged in!");
         }
 
-        return back()->withErrors(['msg' => __("Invalid credentials!")]);
+        return back()->withErrors(['msg' => "Invalid credentials!"]);
     }
 
     public function logout() : RedirectResponse
     {
        Auth::logout();
-       return redirect()->route('admin.login')->with('success', __("Successfully logout!"));
+       return redirect()->route('admin.login')->with('success', "Successfully logout!");
     }
 }

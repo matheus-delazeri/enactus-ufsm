@@ -12,12 +12,12 @@
                                 <form action="{{ route('admin.login')  }}" method="POST" id="logForm">
                                     {{ csrf_field() }}
                                     <div class="form-label-group">
-                                        <label for="inputUser">{{ __("E-mail") }}</label>
-                                        <input type="email" name="email" class="form-control" placeholder="{{__("E-mail")}}" >
+                                        <label for="user">{{ __("Username") }}</label>
+                                        <input type="text" name="user" class="form-control" placeholder="{{__("Username")}}" >
                                     </div>
                                     <br>
                                     <div class="form-label-group">
-                                        <label for="inputPassword">{{ __("Password") }}</label>
+                                        <label for="password">{{ __("Password") }}</label>
                                         <input type="password" name="password" class="form-control" placeholder="{{__("Password")}}" >
                                     </div>
                                     <br>
