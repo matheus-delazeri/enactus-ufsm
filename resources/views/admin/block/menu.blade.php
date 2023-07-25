@@ -1,7 +1,7 @@
 <div class="menu col-md-2 h-100 p-0 shadow">
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light h-100">
         <div class="d-flex align-items-center">
-            <a href="{{ route('admin.') }}"
+            <a href="{{ route('admin.home') }}"
                class="text-decoration-none w-100">
                 <span class="fs-4">{{ config('app.name') }} <span class="fs-6 mx-1">v1.0</span></span>
             </a>
