@@ -20,12 +20,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('/login', [\App\Http\Controllers\UserController::class, 'login']);
 
     Route::middleware('auth')->group(function () {
-        Route::view('/', 'admin.page.dashboard');
-        Route::group(['prefix' => 'post', 'as' => 'post.'], function () {
-            Route::view('/store', 'admin.page.post')->name('store');
-            Route::post('/store', [\App\Http\Controllers\Admin\PostController::class, 'store']);
-            Route::get('/edit/{id}', [\App\Http\Controllers\Admin\PostController::class, 'edit']);
-            Route::put('/edit/{id}', [\App\Http\Controllers\Admin\PostController::class, 'update'])->name('update');
-        });
-        });
+        Route::view('/', 'admin.page.home')->name("home");
+        Route::resource('post', \App\Http\Controllers\Admin\PostController::class);
     });
+});

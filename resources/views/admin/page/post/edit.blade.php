@@ -1,12 +1,12 @@
-@extends('admin.layout.default', ['menu' => false, 'footer' => false])
+@extends('admin.layout.default', ['menu' => true])
 
 @section('content')
     @isset($post)
-                <h2 class="page-title"><i class="fa fa-newspaper"></i>{{ ("Post #" . $post->id)}}</h2>
+                <h2 class="page-title"><i class="fa fa-pencil"></i>{{ ("Post #" . $post->id)}}</h2>
                 <p class="text-comment"><i class="fa fa-chevron-right"></i>{{ ("Edit post") }}</p>
                 {{ Form::model($post, ['route' => ['admin.post.update', $post->id], 'files' => true, 'method' => 'PUT']) }}
             @else
-                <h2 class="page-title"><i class="fa fa-newspaper"></i>{{ ("Posts") }}</h2>
+                <h2 class="page-title"><i class="fa fa-pencil"></i>{{ ("Posts") }}</h2>
                 <p class="text-comment"><i class="fa fa-chevron-right"></i>{{ ("New post") }}</p>
                 {{ Form::open(['route' => 'admin.post.store', 'files' => true]) }}
             @endif
@@ -32,8 +32,6 @@
             {{ Form::text('meta_keywords', null, ['class' => 'form-control mb-3']) }}
         </div>
                 <div class="col-md-2">
-                    {{ Form::label('date', __('Date'), ['class' => 'form-label']) }}
-                    {{ Form::date('date', null, ['class' => 'form-control mb-3']) }}
                     {{ Form::label('file', __('Image'), ['class' => 'form-label']) }}
                     @isset($post)
                         @isset($post->image)

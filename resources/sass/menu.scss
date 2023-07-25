@@ -1,0 +1,24 @@
+.menu {
+    background: $secondary;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+.btn-toggle-menu {
+    display: none;
+    z-index: $zindex-fixed
+}
+
+@include media-breakpoint-down(sm) {
+    .menu {
+        position: fixed;
+        z-index: $zindex-fixed;
+        margin-left: -100%;
+        box-shadow: none !important;
+    }
+    .btn-toggle-menu {
+        display: flex
+    }
+}

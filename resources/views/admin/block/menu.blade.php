@@ -1,7 +1,7 @@
 <div class="menu col-md-2 h-100 p-0 shadow">
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-light h-100">
         <div class="d-flex align-items-center">
-            <a href="{{ url('admin') }}"
+            <a href="{{ route('admin.') }}"
                class="text-decoration-none w-100">
                 <span class="fs-4">{{ config('app.name') }} <span class="fs-6 mx-1">v1.0</span></span>
             </a>
@@ -10,9 +10,15 @@
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li>
-                <a href="{{ url('admin/') }}"
-                   class="nav-link {{ Route::is('admin.index') ? 'active' : 'link-dark' }}">
-                    <i class="fa fa-home"></i> Home
+                <a href="{{ route('admin.home') }}"
+                   class="nav-link {{ Route::is('admin.home') ? 'active' : 'link-dark' }}">
+                    <i class="fa fa-home"></i> {{ __("Home") }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.post.index') }}"
+                   class="nav-link {{ Route::is('admin.post.*') ? 'active' : 'link-dark' }}">
+                    <i class="fa fa-pencil"></i> {{ __("Posts") }}
                 </a>
             </li>
         </ul>
@@ -23,7 +29,8 @@
                 <i class="fa fa-user-circle fa-lg"></i><strong>{{ Auth::user()->user }}</strong>
             </a>
             <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser">
-                <li><a class="dropdown-item" href="{{ url("admin/logout") }}">Sair</a></li>
+                <li><a class="dropdown-item" href="{{ route("admin.logout") }}">
+                        <i class="fa fa-arrow-right-from-bracket"></i>{{ __("Logout") }}</a></li>
             </ul>
         </div>
     </div>

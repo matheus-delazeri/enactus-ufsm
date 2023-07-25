@@ -1,8 +1,32 @@
-// Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Raleway:wght@100;200;300;500;700&family=Roboto:wght@300&display=swap');
 
-// Variables
 @import 'variables';
 
-// Bootstrap
+$font-family-sans-serif: 'Raleway', sans-serif;
+$font-weight-base: 400;
+$font-weight-light: 300;
+
+/** Color palette */
+$primary: #393E46;
+$secondary: #222831;
+
+$body-color: $secondary;
+$btn-color: $primary;
+
+$nav-link-font-weight: 700;
+$box-shadow-sm: 0 .125rem .25rem rgba($secondary, .075);
+$box-shadow: 0 1.5rem 1rem rgba($secondary, .25);
+
 @import 'bootstrap/scss/bootstrap';
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import 'menu';
+@import 'grid';
+
+.fa {
+    margin-right: .5rem;
+    transition: transform .50s
+}
