@@ -39,5 +39,6 @@
 
 </div>
 
+@include($prefix.'block.js')
 </body>
 </html>
