@@ -21,6 +21,14 @@
                     <i class="fa fa-pencil"></i> {{ __("Posts") }}
                 </a>
             </li>
+            @can(\App\Enums\Permissions\UserPermission::CREATE_USER->name)
+                <li>
+                    <a href="{{ route('admin.user.index') }}"
+                       class="nav-link {{ Route::is('admin.user.*') ? 'active' : 'link-dark' }}">
+                        <i class="fa fa-user"></i> {{ __("Users") }}
+                    </a>
+                </li>
+            @endcan
         </ul>
         <hr>
         <div class="dropdown">
@@ -40,7 +48,7 @@
 </div>
 
 <script type="module">
-    $(".btn-toggle-menu").on("click", function(el) {
+    $(".btn-toggle-menu").on("click", function (el) {
         $(".btn-toggle-menu > .btn > i").toggleClass("fa-bars fa-close rotate")
         $(".menu").toggleClass("mx-0")
     })

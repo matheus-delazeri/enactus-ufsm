@@ -13,6 +13,7 @@
         "laravel/ui": "^4.2",
         "laravelcollective/html": "^6.4",
         "livewire/livewire": "^2.12",
+        "spatie/laravel-permission": "^5.10",
         "yoeunes/toastr": "^2.3"
     },
     "require-dev": {

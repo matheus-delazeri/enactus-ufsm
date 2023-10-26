@@ -12,7 +12,7 @@ class Authenticate extends Middleware
 {
     public function handle($request, Closure $next, ...$guards)
     {
-        if (Auth::check() && Auth::user()->isAdmin()) {
+        if (Auth::check()) {
             /** Allows language changes */
             App::setLocale(Auth::user()->locale);
             return $next($request);

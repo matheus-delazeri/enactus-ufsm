@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('author_id')->references('id')->on('users')->onDelete("cascade");
             $table->string('title');
             $table->string('state')->default(\App\Models\Post::STATE_DRAFT);
             $table->text('short_content');
             $table->text('content');
             $table->string('image', 255)->nullable();
-            $table->text('url_key');
+            $table->text('url_key')->nullable();
             $table->text('meta_description')->nullable();
             $table->text('meta_keywords')->nullable();
             $table->timestamps();

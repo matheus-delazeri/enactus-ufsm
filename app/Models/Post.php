@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
+/**
+ * @property string url_key
+ * @property string title
+ */
 class Post extends Model
 {
     use HasFactory;
@@ -14,6 +20,7 @@ class Post extends Model
 
     protected $fillable = [
         'title',
+        'author_id',
         'state',
         'short_content',
         'content',
@@ -23,13 +30,25 @@ class Post extends Model
         'meta_keywords',
     ];
 
-    public function save(array $options = []){
-        
-        if(!$this->url_key){
-            $this->url_key = Str::slug($this->title); 
-        }
-
-        return parent::save($options);
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($post) {
+            $post->author_id = \Auth::user()->id;
+        });
     }
+
+    protected function urlKey(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $value ?? Str::slug($this->title)
+        );
+    }
+
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
+
 
 }
